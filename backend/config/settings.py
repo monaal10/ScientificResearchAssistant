@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Database constants
+ATLAS_URI = os.getenv('ATLAS_URI')
 RESEARCH_PAPER_DATABASE = "researchPapers"
 LITERATURE_REVIEW_DATABASE = "literatureReviews"
 SAVED_PAPERS_DATABASE = "savedPapers"

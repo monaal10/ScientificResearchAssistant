@@ -3,13 +3,18 @@ from pymongo import MongoClient, InsertOne, UpdateOne
 from pymongo.errors import BulkWriteError, DuplicateKeyError
 from pymongo.server_api import ServerApi
 import logging
+import os
+from dotenv import load_dotenv
 
 from main.utils.constants import RESEARCH_PAPER_DATABASE
 
+# Load environment variables
+load_dotenv()
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
-ATLAS_URI = ("mongodb+srv://monaal:Abcd1234!@atlascluster.2fxmiy3.mongodb.net/?retryWrites=true&w=majority&appName"
-             "=AtlasCluster")
+
+ATLAS_URI = os.getenv('ATLAS_URI')
 client = MongoClient(ATLAS_URI, server_api=ServerApi('1'), uuidRepresentation="standard")
 database = client['aristto']
 
